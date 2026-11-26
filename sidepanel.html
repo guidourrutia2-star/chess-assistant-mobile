@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#365c49">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="Chess Assistant">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+  <title>Chess Assistant</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="sidepanel.css">
+</head>
+<body>
+  <main class="app">
+    <header class="topbar">
+      <div class="brand-mark" aria-hidden="true">♞</div>
+      <div><h1>Chess Assistant</h1><p>Mové tus jugadas acá, paso a paso.</p></div>
+      <button id="installApp" class="install-app" type="button" hidden>Instalar</button>
+      <button id="reset" class="icon-button" type="button" title="Posición inicial" aria-label="Volver a la posición inicial">↺</button>
+    </header>
+
+    <section class="turn-row" aria-label="Orientación del tablero">
+      <span class="field-label">Ver desde</span>
+      <div class="segmented" role="group" aria-label="Elegir bando">
+        <button class="turn-option active" data-view="w" type="button"><span class="mini-piece white-piece">♔</span> Blancas</button>
+        <button class="turn-option" data-view="b" type="button"><span class="mini-piece black-piece">♚</span> Negras</button>
+      </div>
+    </section>
+    <section class="turn-row play-row" aria-label="Bando que juega">
+      <span class="field-label">Juegan</span>
+      <div class="segmented" role="group" aria-label="Elegir turno">
+        <button class="play-option active" data-turn="w" type="button"><span class="mini-piece white-piece">♔</span> Blancas</button>
+        <button class="play-option" data-turn="b" type="button"><span class="mini-piece black-piece">♚</span> Negras</button>
+      </div>
+    </section>
+    <section class="strength-panel" aria-label="Fuerza del motor">
+      <div class="strength-heading"><span class="field-label">Fuerza de Stockfish</span><strong id="eloValue">2400 Elo</strong></div>
+      <input id="eloSlider" type="range" min="1320" max="3190" step="10" value="2400" aria-label="Elo de Stockfish">
+      <label class="max-strength"><input id="maxStrength" type="checkbox"><span><strong>Máxima fuerza</strong><small>Sin límite de Elo; puede tardar más.</small></span></label>
+    </section>
+
+    <section class="board-wrap" aria-label="Tablero de ajedrez">
+      <div class="board" id="board" role="grid" aria-label="Tablero editable"></div>
+    </section>
+
+    <section class="move-history-panel" aria-label="Historial de movimientos">
+      <div class="history-heading"><span class="field-label">Historial</span><button id="clearHistory" class="history-clear" type="button">Limpiar</button></div>
+      <div id="moveHistory" class="move-history">Las jugadas aparecerán acá.</div>
+    </section>
+
+    <section class="editor" aria-label="Editor de piezas">
+      <div class="editor-heading"><span class="field-label">Colocar pieza</span><span id="editorHint">Elegí una pieza o tocá una casilla para mover.</span></div>
+      <div class="palette" id="palette" role="group" aria-label="Piezas para colocar"></div>
+      <div class="editor-actions">
+        <button id="removeMode" class="subtle-button" type="button">⌫ <span>Quitar piezas</span></button>
+        <button id="clearBoard" class="subtle-button danger" type="button">Vaciar tablero</button>
+      </div>
+    </section>
+
+    <section id="result" class="result" aria-live="polite">
+      <div class="recommendation" id="recommendation-w">
+        <div class="recommendation-title"><span class="side-dot white-dot">♔</span><strong>Mejor para blancas</strong><span class="rec-state">En espera</span></div>
+        <div class="rec-move">—</div><p class="rec-explanation">Las sugerencias se actualizan automáticamente.</p>
+      </div>
+      <div class="recommendation" id="recommendation-b">
+        <div class="recommendation-title"><span class="side-dot black-dot">♚</span><strong>Mejor para negras</strong><span class="rec-state">En espera</span></div>
+        <div class="rec-move">—</div><p class="rec-explanation">Stockfish no moverá ninguna pieza.</p>
+      </div>
+    </section>
+    <section class="confidence-panel" aria-label="Estabilidad del análisis">
+      <div class="confidence-heading"><strong>Estabilidad de la sugerencia</strong><span id="confidenceValue">0%</span></div>
+      <div class="confidence-track" role="meter" aria-label="Estabilidad del análisis" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><div id="confidenceFill"></div></div>
+      <small id="confidenceNote">Aumenta con la profundidad y la estabilidad de la jugada.</small>
+    </section>
+    <div class="analysis-status" id="analysisStatus" aria-live="polite">El análisis se actualiza solo al cambiar la posición.</div>
+    <footer><span class="local-dot"></span> Análisis privado en tu dispositivo</footer>
+  </main>
+  <script type="module" src="sidepanel.js"></script>
+</body>
+</html>

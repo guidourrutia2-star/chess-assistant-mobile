@@ -1,0 +1,17 @@
+{
+  "id": "./sidepanel.html",
+  "name": "Chess Assistant",
+  "short_name": "Chess Assistant",
+  "description": "Tablero de ajedrez manual con análisis local de Stockfish.",
+  "start_url": "./sidepanel.html",
+  "scope": "./",
+  "display": "standalone",
+  "display_override": ["standalone", "minimal-ui"],
+  "background_color": "#fbfaf6",
+  "theme_color": "#365c49",
+  "prefer_related_applications": false,
+  "icons": [
+    { "src": "assets/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any maskable" },
+    { "src": "assets/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+  ]
+}

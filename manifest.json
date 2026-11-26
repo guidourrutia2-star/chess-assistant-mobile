@@ -1,0 +1,14 @@
+{
+  "manifest_version": 3,
+  "minimum_chrome_version": "114",
+  "name": "Chess Assistant",
+  "version": "1.0.0",
+  "description": "Editá una posición de ajedrez y consultá una recomendación local de Stockfish.",
+  "permissions": ["sidePanel"],
+  "action": { "default_title": "Abrir Chess Assistant" },
+  "background": { "service_worker": "service-worker.js" },
+  "side_panel": { "default_path": "sidepanel.html" },
+  "content_security_policy": {
+    "extension_pages": "script-src 'self' 'wasm-unsafe-eval'; object-src 'self'"
+  }
+}

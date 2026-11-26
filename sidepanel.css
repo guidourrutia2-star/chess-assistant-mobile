@@ -1,0 +1,51 @@
+/* Side panel layout and paired recommendations */
+body{width:100%;min-width:280px;max-width:430px;max-height:100vh;overflow-y:auto;margin:0 auto}
+.app{padding:16px 16px 12px}
+.result{display:grid;gap:8px;background:transparent;border:0;padding:0;margin-top:10px}
+.recommendation{border:1px solid var(--line);border-radius:11px;background:#fff;padding:10px 11px;min-height:76px}
+.recommendation-title{display:flex;align-items:center;gap:7px;font-size:11px}
+.recommendation-title strong{font-size:11px}
+.side-dot{width:21px;height:21px;border-radius:7px;display:grid;place-items:center;font:16px 'Segoe UI Symbol',serif}
+.white-dot{background:#eff3e7;color:#fff;text-shadow:0 0 2px #273329,0 1px 2px #273329}
+.black-dot{background:#e9ece5;color:#26342b}
+.rec-state{margin-left:auto;color:#899087;font-size:10px}
+.rec-move{margin:5px 0 1px 28px;color:var(--green);font-weight:800;font-size:15px}
+.rec-explanation{margin:0 0 0 28px;color:var(--muted);font-size:10px;line-height:1.35}
+.analysis-status{text-align:center;color:#899087;font-size:10px;margin-top:8px}
+.square .piece{font-size:clamp(24px,8.1vw,38px)}
+.play-option{border:0;background:transparent;border-radius:8px;padding:6px 10px;color:#747b72;font-size:12px;cursor:pointer}
+.play-option.active{background:#fff;color:var(--ink);box-shadow:0 1px 3px #2221;font-weight:700}
+.play-row{margin-top:-5px}
+.square.legal-target::after{content:"";position:absolute;width:25%;height:25%;border-radius:50%;background:#31564270;z-index:2;pointer-events:none}
+.square.legal-target.has-piece::after{width:78%;height:78%;background:transparent;border:4px solid #31564285}
+.square.recommended-from{box-shadow:inset 0 0 0 3px #d9ad39;z-index:2}
+.square.recommended-to{box-shadow:inset 0 0 0 4px #6f91ce;z-index:2}
+.square.recommended-to::before{content:"";position:absolute;inset:0;background:#8aa9e133;z-index:0;pointer-events:none}
+.square.recommended-to .piece,.square.recommended-from .piece{z-index:3}
+.strength-panel{margin:5px 0 12px;padding:9px 11px 8px;border:1px solid var(--line);border-radius:11px;background:#fff}
+.strength-heading{display:flex;align-items:center;justify-content:space-between;font-size:11px}
+.strength-heading strong{color:var(--green);font-size:12px}
+#eloSlider{width:100%;height:4px;margin:10px 0 7px;accent-color:var(--green);cursor:pointer}
+#eloSlider:disabled{opacity:.4;cursor:not-allowed}
+.max-strength{display:flex;align-items:center;gap:7px;cursor:pointer}
+.max-strength input{accent-color:var(--green);margin:0}
+.max-strength span{display:flex;align-items:baseline;gap:6px}
+.max-strength strong{font-size:11px}
+.max-strength small{font-size:9px;color:var(--muted)}
+.move-history-panel{margin:9px 0 3px;padding:9px 10px;border:1px solid var(--line);border-radius:10px;background:#fff}
+.history-heading{display:flex;align-items:center;justify-content:space-between}
+.history-clear{border:0;background:transparent;color:var(--muted);font-size:10px;cursor:pointer}
+.move-history{display:flex;flex-wrap:wrap;gap:4px 8px;margin-top:6px;max-height:68px;overflow-y:auto;color:var(--muted);font-size:11px}
+.move-pair{display:inline-flex;gap:4px;white-space:nowrap}
+.move-number{color:#a0a59d}
+.move-white{color:#314b39;font-weight:650}
+.move-black{color:#656c65}
+.confidence-panel{margin:7px 0 0;padding:9px 10px;border:1px solid var(--line);border-radius:10px;background:#fff}
+.confidence-heading{display:flex;align-items:center;justify-content:space-between;font-size:10px}
+.confidence-heading strong{font-size:10px}
+.confidence-heading span{color:var(--green);font-weight:800}
+.confidence-track{height:6px;margin:7px 0 5px;overflow:hidden;border-radius:999px;background:#eceee7}
+#confidenceFill{height:100%;width:0;border-radius:inherit;background:linear-gradient(90deg,#a9bd7f,#416c50);transition:width .35s ease}
+.confidence-panel small{display:block;color:var(--muted);font-size:9px;line-height:1.35}
+.install-app{border:1px solid #d9e3d7;border-radius:9px;background:#edf3e7;color:var(--green);font-size:11px;font-weight:700;padding:7px 9px;cursor:pointer}
+.install-app[hidden]{display:none}
